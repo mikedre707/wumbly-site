@@ -104,6 +104,103 @@ nav a:hover {
   color: var(--indigo);
 }
 
+nav a.play {
+  background: var(--green);
+  color: #163a22;
+  box-shadow: 0 3px 0 var(--green-edge);
+}
+
+nav a.play:hover {
+  color: #163a22;
+}
+
+.btn-play {
+  display: inline-block;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 21px;
+  color: #163a22;
+  background: var(--green);
+  text-decoration: none;
+  border-radius: 20px;
+  padding: 16px 34px;
+  box-shadow: 0 6px 0 var(--green-edge), var(--shadow-soft);
+  transition: transform 0.12s ease;
+}
+
+.btn-play:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* ---------- lessons page ---------- */
+
+.track {
+  margin-bottom: 34px;
+}
+
+.track > h2 {
+  text-align: left;
+  font-size: clamp(26px, 4vw, 34px);
+  margin-bottom: 14px;
+}
+
+.level {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: var(--surface);
+  border-radius: 22px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 0 rgba(41, 46, 84, 0.07), var(--shadow-soft);
+}
+
+.level .chip {
+  flex: 0 0 auto;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 14px;
+  padding: 8px 14px;
+  box-shadow: 0 3px 0 var(--edge, var(--indigo-edge));
+  white-space: nowrap;
+}
+
+.level h3 {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.level p {
+  font-size: 15.5px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.level .try {
+  margin-left: auto;
+  align-self: center;
+  font-family: 'Baloo 2', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--indigo);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.chip.indigo { background: var(--indigo); --edge: var(--indigo-edge); }
+.chip.pink   { background: var(--pink);   --edge: var(--pink-edge); }
+.chip.orange { background: var(--orange); --edge: var(--orange-edge); color: var(--ink); }
+.chip.teal   { background: var(--teal);   --edge: var(--teal-edge); color: var(--ink); }
+.chip.green  { background: var(--green);  --edge: var(--green-edge); color: var(--ink); }
+.chip.purple { background: var(--purple); --edge: var(--purple-edge); }
+
+@media (max-width: 560px) {
+  .level { flex-wrap: wrap; }
+  .level .try { margin-left: 0; }
+}
+
 /* ---------- floating candy blobs ---------- */
 
 .blob {
