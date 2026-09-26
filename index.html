@@ -41,8 +41,8 @@
         <a class="btn-play" href="app/">▶&nbsp; Play Wumbly in your browser</a>
       </div>
       <div class="badges">
-        <div class="badge"><span>Coming soon to the</span>App Store</div>
-        <div class="badge"><span>Coming soon to</span>Google Play</div>
+        <a class="badge store-btn apple" style="text-decoration:none;color:inherit;" href="https://apps.apple.com/app/id6798432218"><span>Download on the</span>App Store</a>
+        <a class="badge store-btn play" style="text-decoration:none;color:inherit;" href="https://play.google.com/store/apps/details?id=com.mlazaro.wumbly"><span>Get it on</span>Google Play</a>
       </div>
     </div>
   </div>
@@ -144,6 +144,33 @@
     © 2026 Wumbly · made with ❤️ (and a lot of juice boxes)
   </div>
 </footer>
+
+<script>
+  // Visitors who arrive from an ad carry utm_* parameters. Pass those on to
+  // the store buttons so Play Console and App Store Connect attribute the
+  // installs; everyone else keeps the plain links.
+  (function () {
+    var q = new URLSearchParams(window.location.search);
+    var source = q.get('utm_source');
+    if (!source) return;
+    var campaign = q.get('utm_campaign') || 'landing';
+    var medium = q.get('utm_medium') || 'referral';
+    var play = document.querySelector('.store-btn.play');
+    if (play) {
+      play.href = 'https://play.google.com/store/apps/details?id=com.mlazaro.wumbly&referrer=' +
+        encodeURIComponent('utm_source=' + source + '&utm_medium=' + medium + '&utm_campaign=' + campaign);
+    }
+    // Provider token = the developer account (same as StorySprout); the
+    // campaign token must exist in App Store Connect → Analytics → Campaigns.
+    var APPLE_PROVIDER_TOKEN = '129073195';
+    var appleCampaign = source === 'meta' ? 'meta_launch' : campaign;
+    var apple = document.querySelector('.store-btn.apple');
+    if (apple && APPLE_PROVIDER_TOKEN) {
+      apple.href = 'https://apps.apple.com/app/apple-store/id6798432218?pt=' + APPLE_PROVIDER_TOKEN +
+        '&ct=' + encodeURIComponent(appleCampaign) + '&mt=8';
+    }
+  })();
+</script>
 
 </body>
 </html>
